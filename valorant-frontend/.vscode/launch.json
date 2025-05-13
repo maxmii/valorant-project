@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}",
+      "sourceMapPathOverrides": {
+        "/@fs/*": "${webRoot}/*",
+        "/*": "${webRoot}/*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*",
+        "webpack://?:*/*": "${webRoot}/*"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Vite Dev Server",
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["run", "debug:chrome"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "internalConsole"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Vite: Full Stack",
+      "configurations": ["Debug Vite Dev Server", "Launch Chrome against localhost"]
+    }
+  ]
+}
