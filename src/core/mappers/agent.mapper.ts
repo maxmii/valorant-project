@@ -1,6 +1,7 @@
 import {Injectable, Logger} from '@nestjs/common';
-import {IAgent} from '../interfaces/agents.interface';
 import {AgentRole} from '../interfaces/agentRole.enum';
+import {AgentDto} from '../interfaces/dto/agents.dto';
+import {IAgent} from '../interfaces/agents.interface';
 
 @Injectable()
 export class AgentsMapper {
@@ -39,47 +40,46 @@ export class AgentsMapper {
     agentRolesData.forEach(([agent, role]) => this.agentRoles.set(agent, role));
   }
 
-  public mapAgents(agentData: IAgent[], agentName: string | null): any[] {
+  public mapAgents(agentData: AgentDto[], agentName: string | null): IAgent[] {
     try {
-      if (agentName) {
-        const agent = agentData.filter(
-          (agent) =>
-            agent.displayName.toLowerCase() === agentName.toLowerCase() &&
-            agent.isPlayableCharacter,
-        );
+      const agent = agentData.filter((agent) =>
+        agentName
+          ? agent.displayName.toLowerCase() === agentName.toLowerCase() &&
+            agent.isPlayableCharacter
+          : agent.isPlayableCharacter,
+      );
 
-        if (agent.length === 0) {
-          const err = new Error('Agent cannot be found sorry');
-          this.logger.error(`Error: ${err.message}`);
+      if (agent.length === 0) {
+        const err = new Error('Agent cannot be found sorry');
+        this.logger.error(`Error: ${err.message}`);
 
-          throw err;
-        }
-
-        return agent.map(
-          ({
-            displayName,
-            description,
-            abilities,
-            fullPortrait,
-            fullPortraitV2,
-          }) => ({
-            agentName: displayName,
-            agentDescription: description,
-            agentAbilities: abilities,
-            agentPortrait: fullPortrait,
-            agentPortraitV2: fullPortraitV2,
-            agentRole: this.getAgentRole(displayName)
-          }),
-        );
+        throw err;
       }
+
+      return agent.map(
+        ({
+          displayName,
+          description,
+          abilities,
+          fullPortrait,
+          fullPortraitV2,
+        }) => ({
+          agentName: displayName,
+          agentDescription: description,
+          agentAbilities: abilities,
+          agentPortrait: fullPortrait,
+          agentPortraitV2: fullPortraitV2,
+          agentRole: this.getAgentRole(displayName),
+        }),
+      );
     } catch {
-      const error = new Error(`Unable to retrieve agent ${agentName}`)
-      this.logger.error(`Error: ${error.message}`)
+      const error = new Error(`Unable to retrieve agent ${agentName}`);
+      this.logger.error(`Error: ${error.message}`);
       throw error;
     }
   }
 
   private getAgentRole(agentName: string): string {
-    return this.agentRoles.get(agentName)
+    return this.agentRoles.get(agentName);
   }
 }
