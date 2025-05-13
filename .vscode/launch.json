@@ -1,0 +1,160 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug NestJS Backend",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "run",
+        "start:debug"
+      ],
+      "cwd": "${workspaceFolder}/valorant-backend",
+      "console": "integratedTerminal",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/valorant-backend/dist/**/*.js"
+      ],
+      "sourceMaps": true,
+      "restart": true,
+      "env": {
+        "NODE_ENV": "development",
+        "NODE_OPTIONS": "--inspect"
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug React Frontend",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/valorant-frontend",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "/__ROOT__/*": "${workspaceFolder}/valorant-frontend/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/src/*",
+        "/*": "${webRoot}/*",
+        "/dist/*": "${webRoot}/dist/*"
+      },
+      "preLaunchTask": "Start Frontend",
+      "userDataDir": false,
+      "trace": true,
+      "runtimeArgs": [
+        "--disable-web-security",
+        "--disable-features=IsolateOrigins,site-per-process"
+      ]
+    },
+    {
+      "name": "Debug Vite Dev Server",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/valorant-frontend",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["run", "dev:debug"],
+      "sourceMaps": true,
+      "console": "integratedTerminal",
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/valorant-frontend/node_modules/**"
+      ],
+      "env": {
+        "NODE_ENV": "development",
+        "VSCODE_JS_DEBUG_USE_EXPERIMENTAL_NETWORK_INSPECTION": "false"
+      },
+      "restart": true
+    },
+    {
+      "name": "Direct Chrome Debug",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/valorant-frontend",
+      "userDataDir": false,
+      "sourceMaps": true,
+      "disableNetworkCache": true,
+      "runtimeArgs": [
+        "--auto-open-devtools-for-tabs"
+      ]
+    },
+    {
+      "name": "Chrome Browser Debug",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/valorant-frontend",
+      "sourceMaps": true,
+      "userDataDir": "${workspaceFolder}/.vscode/chrome-debug-profile",
+      "runtimeArgs": [
+        "--disable-web-security",
+        "--remote-debugging-port=9222"
+      ],
+      "sourceMapPathOverrides": {
+        "/__ROOT__/*": "${workspaceFolder}/valorant-frontend/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/src/*",
+        "/*": "${webRoot}/*",
+        "/dist/*": "${webRoot}/dist/*"
+      }
+    },
+    {
+      "name": "Debug Frontend With Sourcemap",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/valorant-frontend",
+      "sourceMaps": true,
+      "preLaunchTask": "Start Frontend Sourcemap",
+      "sourceMapPathOverrides": {
+        "/__ROOT__/*": "${workspaceFolder}/valorant-frontend/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/src/*",
+        "/*": "${webRoot}/*",
+        "/dist/*": "${webRoot}/dist/*"
+      },
+      "userDataDir": false
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Backend E2E Tests",
+      "cwd": "${workspaceFolder}/valorant-backend",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "jest",
+        "--config",
+        "./test/jest-e2e.json",
+        "--runInBand"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "Attach to Chrome",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}/valorant-frontend",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "/__ROOT__/*": "${workspaceFolder}/valorant-frontend/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/src/*",
+        "/*": "${webRoot}/*",
+        "/dist/*": "${webRoot}/dist/*"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack: Frontend + Backend",
+      "configurations": ["Debug NestJS Backend", "Chrome Browser Debug"]
+    },
+    {
+      "name": "Full Stack with Debug Server: Frontend + Backend",
+      "configurations": ["Debug NestJS Backend", "Debug Vite Dev Server"]
+    }
+  ]
+}
