@@ -1,4 +1,4 @@
-import {Controller, Get, Param} from '@nestjs/common';
+import {Controller, Get, Param, Query} from '@nestjs/common';
 import {IAgent} from 'src/core/interfaces/agents.interface';
 import {GetAgentsUseCase} from 'src/core/use-cases/get-agents.use-case';
 
@@ -10,12 +10,15 @@ export class AgentsController {
   constructor(private readonly getAgentsUseCase: GetAgentsUseCase) {}
 
   @Get()
-  getAllAgents(): Promise<IAgent[]> {
-    return this.getAgentsUseCase.execute();
+  getAllAgents(@Query('agentRole') agentRole: string): Promise<IAgent[]> {
+    return this.getAgentsUseCase.execute({agentRole});
   }
 
   @Get(':agentName')
-  getAgentByName(@Param('agentName') agentName: string): Promise<IAgent> {
-    return this.getAgentsUseCase.execute(agentName);
+  getAgentByName(
+    @Param('agentName') agentName,
+    @Query('agentRole') agentRole,
+  ): Promise<IAgent[]> {
+    return this.getAgentsUseCase.execute({agentName, agentRole});
   }
 }

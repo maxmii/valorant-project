@@ -41,23 +41,27 @@ export class AgentsMapper {
     agentRolesData.forEach(([agent, role]) => this.agentRoles.set(agent, role));
   }
 
-  public mapAgents(agentData: AgentDto[], agentName: string | null): IAgent[] {
+  public mapAgents(
+    agentData: AgentDto[],
+    agentName: string | null,
+    agentRole: string | null,
+  ): IAgent[] {
     try {
-      const agent = agentData.filter((agent) =>
+      const agents = agentData.filter((agent) =>
         agentName
           ? agent.displayName.toLowerCase() === agentName.toLowerCase() &&
             agent.isPlayableCharacter
           : agent.isPlayableCharacter,
       );
 
-      if (agent.length === 0) {
+      if (agents.length === 0) {
         const err = new Error('Agent cannot be found sorry');
         this.logger.error(`Error: ${err.message}`);
 
         throw err;
       }
 
-      return agent.map(
+      const agentsData = agents.map(
         ({
           displayName,
           description,
@@ -73,6 +77,11 @@ export class AgentsMapper {
           agentRole: this.getAgentRole(displayName),
         }),
       );
+
+      return agentsData.filter(
+        (agent) => !agentRole || agent.agentRole === agentRole,
+      );
+
     } catch {
       const error = new Error(`Unable to retrieve agent ${agentName}`);
       this.logger.error(`Error: ${error.message}`);

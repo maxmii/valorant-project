@@ -10,13 +10,13 @@
         "run",
         "start:debug"
       ],
-      "cwd": "${workspaceFolder}/valorant-backend",
+      "cwd": "${workspaceFolder}/backend",
       "console": "integratedTerminal",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "outFiles": [
-        "${workspaceFolder}/valorant-backend/dist/**/*.js"
+        "${workspaceFolder}/backend/dist/**/*.js"
       ],
       "sourceMaps": true,
       "restart": true,
@@ -29,14 +29,14 @@
       "name": "Debug Vite Dev Server",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceFolder}/valorant-frontend",
+      "cwd": "${workspaceFolder}/frontend",
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["run", "dev:debug"],
       "sourceMaps": true,
       "console": "integratedTerminal",
       "skipFiles": [
         "<node_internals>/**",
-        "${workspaceFolder}/valorant-frontend/node_modules/**"
+        "${workspaceFolder}/frontend/node_modules/**"
       ],
       "env": {
         "NODE_ENV": "development",
@@ -49,7 +49,7 @@
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:5173",
-      "webRoot": "${workspaceFolder}/valorant-frontend",
+      "webRoot": "${workspaceFolder}/frontend",
       "sourceMaps": true,
       "userDataDir": "${workspaceFolder}/.vscode/chrome-debug-profile",
       "preLaunchTask": "Wait For Services",
@@ -58,7 +58,7 @@
         "--remote-debugging-port=9222"
       ],
       "sourceMapPathOverrides": {
-        "/__ROOT__/*": "${workspaceFolder}/valorant-frontend/*",
+        "/__ROOT__/*": "${workspaceFolder}/frontend/*",
         "/./*": "${webRoot}/*",
         "/src/*": "${webRoot}/src/*",
         "/*": "${webRoot}/*",
@@ -69,7 +69,7 @@
       "type": "node",
       "request": "launch",
       "name": "Debug Backend E2E Tests",
-      "cwd": "${workspaceFolder}/valorant-backend",
+      "cwd": "${workspaceFolder}/backend",
       "runtimeExecutable": "pnpm",
       "runtimeArgs": [
         "jest",
