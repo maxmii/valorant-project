@@ -15,8 +15,8 @@ export const useAgents = () => {
     const fetchAgents = async () => {
       try {
         setLoading(true);
-        const data = await AgentsService.getAllAgents();
-        setAgents(data);
+        const agents = await AgentsService.getAllAgents();
+        setAgents(agents);
         setError(null);
       } catch (err) {
         setError(

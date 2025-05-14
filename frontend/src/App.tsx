@@ -2,7 +2,7 @@ import './App.css';
 import MainLayout from './layout/MainLayout';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import AgentPage from './pages/agents.page';
-import WeaponsPage from './pages/weapons';
+import WeaponsPage from './pages/weapons.page';
 
 function App() {
   return (

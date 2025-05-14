@@ -1,4 +1,4 @@
-import {useAgents} from '../hooks/useAgents';
+import {useAgents} from '../hooks/useAgents.hook';
 import './agents.css';
 
 const AgentPage = () => {
