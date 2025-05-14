@@ -17,8 +17,7 @@ export class AgentsController {
   @Get(':agentName')
   getAgentByName(
     @Param('agentName') agentName,
-    @Query('agentRole') agentRole,
   ): Promise<IAgent[]> {
-    return this.getAgentsUseCase.execute({agentName, agentRole});
+    return this.getAgentsUseCase.execute({agentName});
   }
 }

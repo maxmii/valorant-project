@@ -6,11 +6,17 @@ import {
   AgentsController,
   WeaponsController,
 } from './infrastructure/controllers';
-import {GetAgentsUseCase} from './core/use-cases';
+import {GetAgentsUseCase, GetWeaponsUseCase} from './core/use-cases';
 import {AgentsMapper, WeaponsMapper} from './core/mappers';
 @Module({
   imports: [ConfigModule.forRoot()],
   controllers: [AppController, AgentsController, WeaponsController],
-  providers: [AppService, GetAgentsUseCase, AgentsMapper, WeaponsMapper],
+  providers: [
+    AppService,
+    GetAgentsUseCase,
+    GetWeaponsUseCase,
+    AgentsMapper,
+    WeaponsMapper,
+  ],
 })
 export class AppModule {}

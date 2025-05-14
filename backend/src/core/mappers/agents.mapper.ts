@@ -61,27 +61,24 @@ export class AgentsMapper {
         throw err;
       }
 
-      const agentsData = agents.map(
-        ({
-          displayName,
-          description,
-          abilities,
-          fullPortrait,
-          fullPortraitV2,
-        }) => ({
-          agentName: displayName,
-          agentDescription: description,
-          agentAbilities: abilities,
-          agentPortrait: fullPortrait,
-          agentPortraitV2: fullPortraitV2,
-          agentRole: this.getAgentRole(displayName),
-        }),
-      );
-
-      return agentsData.filter(
-        (agent) => !agentRole || agent.agentRole === agentRole,
-      );
-
+      return agents
+        .map(
+          ({
+            displayName,
+            description,
+            abilities,
+            fullPortrait,
+            fullPortraitV2,
+          }) => ({
+            agentName: displayName,
+            agentDescription: description,
+            agentAbilities: abilities,
+            agentPortrait: fullPortrait,
+            agentPortraitV2: fullPortraitV2,
+            agentRole: this.getAgentRole(displayName),
+          }),
+        )
+        .filter((agent) => !agentRole || agent.agentRole === agentRole);
     } catch {
       const error = new Error(`Unable to retrieve agent ${agentName}`);
       this.logger.error(`Error: ${error.message}`);

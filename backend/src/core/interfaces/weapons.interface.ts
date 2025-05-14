@@ -1,11 +1,8 @@
 export interface IWeapon {
-  uuid: string;
-  displayName: string;
-  category: string;
-  defaultSkinUuid: string;
+  weaponName: string;
+  weaponType: string;
   displayIcon: string;
   killStreamIcon: string;
-  assetPath: string;
   weaponStats: WeaponStats;
 }
 
@@ -41,4 +38,53 @@ export interface DamageRange {
   headDamage: number;
   bodyDamage: number;
   legDamage: number;
+}
+
+export interface ShopData {
+  cost: number;
+  category: string;
+  shopOrderPriority: number;
+  categoryText: string;
+  gridPosition: GridPosition;
+  canBeTrashed: boolean;
+  image: string | null;
+  newImage: string;
+  newImage2: string | null;
+  assetPath: string;
+}
+
+export interface GridPosition {
+  row: number;
+  column: number;
+}
+
+export interface Skin {
+  uuid: string;
+  displayName: string;
+  themeUuid: string;
+  contentTierUuid: string | null;
+  displayIcon: string | null;
+  wallpaper: string | null;
+  assetPath: string;
+  chromas: Chroma[];
+  levels: Level[];
+}
+
+export interface Chroma {
+  uuid: string;
+  displayName: string;
+  displayIcon: string | null;
+  fullRender: string;
+  swatch: string | null;
+  streamedVideo: string | null;
+  assetPath: string;
+}
+
+export interface Level {
+  uuid: string;
+  displayName: string;
+  levelItem: string | null;
+  displayIcon: string | null;
+  streamedVideo: string | null;
+  assetPath: string;
 }

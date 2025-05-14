@@ -1,2 +1,2 @@
-export * from './agent.mapper';
+export * from './agents.mapper';
 export * from './weapons.mapper'

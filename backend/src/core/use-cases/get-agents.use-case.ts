@@ -1,6 +1,6 @@
 import {Injectable, Logger} from '@nestjs/common';
 import axios from 'axios';
-import {AgentsMapper} from '../mappers/agent.mapper';
+import {AgentsMapper} from '../mappers/agents.mapper';
 import {IAgent} from '../interfaces/agents.interface';
 import { IAgentQueries } from '../interfaces/agent.queries.interface';
 @Injectable()
