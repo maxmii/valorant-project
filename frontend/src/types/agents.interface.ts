@@ -1,4 +1,3 @@
-// Agent-related interfaces
 export interface IAgentRole {
   uuid: string;
   displayName: string;

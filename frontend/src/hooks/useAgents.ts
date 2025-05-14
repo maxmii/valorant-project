@@ -2,9 +2,9 @@
  * Custom hook for fetching and managing agent data
  */
 
-import { useState, useEffect } from 'react';
-import { IAgent } from '../types/agents.interface';
-import { AgentsService } from '../services/agents.service';
+import {useState, useEffect} from 'react';
+import type {IAgent} from '../types/agents.interface';
+import {AgentsService} from '../services/agents.service';
 
 export const useAgents = () => {
   const [agents, setAgents] = useState<IAgent[]>([]);
@@ -15,11 +15,13 @@ export const useAgents = () => {
     const fetchAgents = async () => {
       try {
         setLoading(true);
-        const data = await AgentsService.getAll();
+        const data = await AgentsService.getAllAgents();
         setAgents(data);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error('An unknown error occurred'));
+        setError(
+          err instanceof Error ? err : new Error('An unknown error occurred')
+        );
       } finally {
         setLoading(false);
       }
@@ -31,15 +33,17 @@ export const useAgents = () => {
   const refetch = async () => {
     try {
       setLoading(true);
-      const data = await AgentsService.getAll();
+      const data = await AgentsService.getAllAgents();
       setAgents(data);
       setError(null);
     } catch (err) {
-      setError(err instanceof Error ? err : new Error('An unknown error occurred'));
+      setError(
+        err instanceof Error ? err : new Error('An unknown error occurred')
+      );
     } finally {
       setLoading(false);
     }
   };
 
-  return { agents, loading, error, refetch };
+  return {agents, loading, error, refetch};
 };

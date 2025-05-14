@@ -1,67 +1,7 @@
 {
   "folders": [
     {
-      "name": "valorant-project",
       "path": "."
-    },
-    {
-      "name": "backend",
-      "path": "valorant-backend"
-    },
-    {
-      "name": "frontend",
-      "path": "valorant-frontend"
     }
-  ],
-  "settings": {
-    "files.exclude": {
-      "valorant-backend/node_modules": true,
-      "valorant-frontend/node_modules": true,
-      "**/.git": true,
-      "**/.svn": true,
-      "**/.hg": true,
-      "**/CVS": true,
-      "**/.DS_Store": true,
-      "**/Thumbs.db": true
-    },
-    "search.exclude": {
-      "**/node_modules": true,
-      "**/dist": true,
-      "**/build": true,
-      "**/.git": true
-    },
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    },
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "debug.javascript.autoAttachFilter": "smart",
-    "workbench.colorCustomizations": {
-      "titleBar.activeBackground": "#410099",
-      "titleBar.activeForeground": "#e7e7e7",
-      "activityBar.background": "#410099",
-      "activityBar.foreground": "#e7e7e7"
-    },
-    "workbench.preferredDarkColorTheme": "Default Dark Modern",
-    "workbench.preferredLightColorTheme": "Default Light Modern"
-  },
-  "extensions": {
-    "recommendations": [
-      "dbaeumer.vscode-eslint",
-      "esbenp.prettier-vscode",
-      "ms-vscode.vscode-typescript-next",
-      "christian-kohler.path-intellisense"
-    ]
-  },
-  "launch": {
-    "version": "0.2.0",
-    "compounds": [
-      {
-        "name": "Full Stack Debug",
-        "configurations": ["Debug NestJS Backend", "Debug React Frontend"]
-      }
-    ]
-  }
+  ]
 }

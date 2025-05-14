@@ -1,11 +1,12 @@
-import { ReactNode } from 'react';
+import type {ReactNode} from 'react';
 import './MainLayout.css';
+import {Outlet, Link} from 'react-router-dom';
 
 interface MainLayoutProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
-const MainLayout = ({ children }: MainLayoutProps) => {
+const MainLayout = ({children}: MainLayoutProps) => {
   return (
     <div className="main-layout">
       <header className="header">
@@ -14,15 +15,22 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         </div>
         <nav className="nav">
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/agents">Agents</a></li>
-            <li><a href="/weapons">Weapons</a></li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/agents">Agents</Link>
+            </li>
+            <li>
+              <Link to="/weapons">Weapons</Link>
+            </li>
           </ul>
         </nav>
       </header>
 
       <main className="content">
         {children}
+        <Outlet />
       </main>
 
       <footer className="footer">
