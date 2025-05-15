@@ -79,8 +79,7 @@ export class AgentsMapper {
           }),
         )
         .filter((agent) => !agentRole || agent.agentRole === agentRole);
-    } catch {
-      const error = new Error(`Unable to retrieve agent ${agentName}`);
+    } catch (error) {
       this.logger.error(`Error: ${error.message}`);
       throw error;
     }

@@ -13,7 +13,6 @@ export interface IAgentAbility {
   displayIcon: string;
 }
 
-
 export interface IAgent {
   agentName: string;
   agentDescription: string;

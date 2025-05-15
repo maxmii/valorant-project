@@ -15,9 +15,7 @@ export class WeaponsController {
   }
 
   @Get(':weaponName')
-  getWeaponByName(
-    @Param('weaponName') weaponName: string,
-  ): Promise<IWeapon[]> {
+  getWeaponByName(@Param('weaponName') weaponName: string): Promise<IWeapon[]> {
     return this.getWeaponsUseCase.execute({weaponName});
   }
 }

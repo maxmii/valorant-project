@@ -2,7 +2,7 @@ import {Injectable, Logger} from '@nestjs/common';
 import axios from 'axios';
 import {AgentsMapper} from '../mappers/agents.mapper';
 import {IAgent} from '../interfaces/agents.interface';
-import { IAgentQueries } from '../interfaces/agent.queries.interface';
+import {IAgentQueries} from '../interfaces/agent.queries.interface';
 @Injectable()
 export class GetAgentsUseCase {
   private readonly logger = new Logger(GetAgentsUseCase.name);
@@ -11,7 +11,7 @@ export class GetAgentsUseCase {
 
   public async execute({
     agentName,
-    agentRole
+    agentRole,
   }: IAgentQueries): Promise<IAgent[]> {
     const apiUrl = process.env.API_URL;
     const resData = await axios
