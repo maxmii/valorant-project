@@ -1,6 +1,6 @@
 import {Controller, Get, Param, Query} from '@nestjs/common';
-import {IAgent} from 'src/core/interfaces/agents.interface';
-import {GetAgentsUseCase} from 'src/core/use-cases/get-agents.use-case';
+import {IAgent} from '@shared/interfaces';
+import {GetAgentsUseCase} from '../../core/use-cases/get-agents.use-case';
 
 @Controller({
   version: '1',

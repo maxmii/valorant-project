@@ -1,4 +1,4 @@
-import {WeaponStats, ShopData, Skin} from '../weapons.interface';
+import {WeaponStats, ShopData, Skin} from '@shared/interfaces';
 
 export class WeaponDto {
   uuid: string;

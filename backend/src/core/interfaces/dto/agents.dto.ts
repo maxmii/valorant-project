@@ -1,4 +1,4 @@
-import {IAgentAbility, IAgentRole} from '../agents.interface';
+import {IAgentAbility, IAgentRole} from '@shared/interfaces';
 
 export class AgentDto {
   uuid: string;

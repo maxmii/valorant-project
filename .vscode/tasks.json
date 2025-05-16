@@ -4,7 +4,7 @@
     {
       "label": "Start Backend",
       "type": "shell",
-      "command": "cd ${workspaceFolder}/valorant-backend && NODE_ENV=development NODE_OPTIONS='--inspect' pnpm run start:debug",
+      "command": "cd ${workspaceFolder}/backend && NODE_ENV=development NODE_OPTIONS='--inspect' pnpm run start:debug",
       "isBackground": true,
       "problemMatcher": {
         "owner": "typescript",
@@ -31,7 +31,7 @@
     {
       "label": "Start Frontend",
       "type": "shell",
-      "command": "cd ${workspaceFolder}/valorant-frontend && VITE_SOURCEMAP=true NODE_OPTIONS='--inspect' pnpm run dev:sourcemap",
+      "command": "cd ${workspaceFolder}/frontend && VITE_SOURCEMAP=true NODE_OPTIONS='--inspect' pnpm run dev:sourcemap",
       "isBackground": true,
       "problemMatcher": {
         "owner": "typescript",
@@ -65,7 +65,7 @@
     {
       "label": "Install Dependencies",
       "type": "shell",
-      "command": "cd ${workspaceFolder} && pnpm install && cd ${workspaceFolder}/valorant-backend && pnpm install && cd ${workspaceFolder}/valorant-frontend && pnpm install",
+      "command": "cd ${workspaceFolder} && pnpm install && cd ${workspaceFolder}/backend && pnpm install && cd ${workspaceFolder}/frontend && pnpm install",
       "presentation": {
         "reveal": "always",
         "panel": "new"
@@ -75,7 +75,7 @@
     {
       "label": "Lint",
       "type": "shell",
-      "command": "cd ${workspaceFolder}/valorant-frontend && pnpm run lint && cd ${workspaceFolder}/valorant-backend && pnpm run lint",
+      "command": "cd ${workspaceFolder}/frontend && pnpm run lint && cd ${workspaceFolder}/backend && pnpm run lint",
       "presentation": {
         "reveal": "always",
         "panel": "new",
@@ -86,7 +86,7 @@
     {
       "label": "Build",
       "type": "shell",
-      "command": "cd ${workspaceFolder}/valorant-frontend && pnpm run build && cd ${workspaceFolder}/valorant-backend && pnpm run build",
+      "command": "cd ${workspaceFolder}/frontend && pnpm run build && cd ${workspaceFolder}/backend && pnpm run build",
       "presentation": {
         "reveal": "always",
         "panel": "new",

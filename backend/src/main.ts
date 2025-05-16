@@ -1,6 +1,14 @@
+import * as tsconfig from 'tsconfig-paths';
+import {join} from 'path';
 import {NestFactory} from '@nestjs/core';
 import {AppModule} from './app.module';
 import {VersioningType, Logger} from '@nestjs/common';
+
+// Register path aliases for @shared
+tsconfig.register({
+  baseUrl: join(__dirname, '..', '..'),
+  paths: { '@shared/*': ['shared/*'] },
+});
 
 async function bootstrap() {
   const logger = new Logger('Bootstrap');

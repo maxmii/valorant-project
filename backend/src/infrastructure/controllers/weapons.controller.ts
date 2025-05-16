@@ -1,5 +1,5 @@
 import {Controller, Get, Param, Query} from '@nestjs/common';
-import {IWeapon} from 'src/core/interfaces/weapons.interface';
+import {IWeapon} from '@shared/interfaces';
 import {GetWeaponsUseCase} from '../../core/use-cases/get-weapons.use-case';
 
 @Controller({
