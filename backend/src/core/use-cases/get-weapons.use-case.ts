@@ -1,8 +1,7 @@
 import {Injectable, Logger} from '@nestjs/common';
 import axios from 'axios';
 import {WeaponsMapper} from '../mappers';
-import {IWeapon} from '../interfaces/weapons.interface';
-import {IWeaponQueries} from '../interfaces/weapons.queries.interface';
+import {IWeapon, IWeaponQueries} from '@shared/interfaces';
 @Injectable()
 export class GetWeaponsUseCase {
   private readonly logger = new Logger(GetWeaponsUseCase.name);

@@ -1,7 +1,6 @@
 import {Injectable, Logger} from '@nestjs/common';
-import {AgentRole} from '../interfaces/agentRole.enum';
 import {AgentDto} from '../interfaces/dto/agents.dto';
-import {IAgent} from '../interfaces/agents.interface';
+import type {IAgent} from '@shared/interfaces/agents.interface';
 
 @Injectable()
 export class AgentsMapper {
@@ -42,7 +41,7 @@ export class AgentsMapper {
             agentAbilities: abilities,
             agentPortrait: fullPortrait,
             agentPortraitV2: fullPortraitV2,
-            agentRole: role.displayName
+            agentRole: role.displayName,
           }),
         )
         .filter((agent) => !agentRole || agent.agentRole === agentRole);

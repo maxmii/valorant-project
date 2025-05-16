@@ -1,8 +1,8 @@
 import {Injectable, Logger} from '@nestjs/common';
 import axios from 'axios';
 import {AgentsMapper} from '../mappers/agents.mapper';
-import {IAgent} from '../interfaces/agents.interface';
-import {IAgentQueries} from '../interfaces/agent.queries.interface';
+import {IAgent, IAgentQueries} from '@shared/interfaces';
+
 @Injectable()
 export class GetAgentsUseCase {
   private readonly logger = new Logger(GetAgentsUseCase.name);

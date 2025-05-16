@@ -19,8 +19,8 @@ export interface WeaponStats {
   fireMode: string | null;
   altFireType: string;
   adsStats: AdsStats;
-  altShotgunStats: any;
-  airBurstStats: any;
+  altShotgunStats: null | AltShotgunStats;
+  airBurstStats: null | AirBurstStats;
   damageRanges: DamageRange[];
 }
 
@@ -87,4 +87,14 @@ export interface Level {
   displayIcon: string | null;
   streamedVideo: string | null;
   assetPath: string;
+}
+
+export interface AirBurstStats {
+  shotgunPelletCount: number;
+  burstDistance: number;
+}
+
+export interface AltShotgunStats {
+  shotgunPelletCount: number;
+  burstRate: number;
 }

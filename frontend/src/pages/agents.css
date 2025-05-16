@@ -5,7 +5,7 @@
   margin: 0 auto;
 }
 
-.loading-container, 
+.loading-container,
 .error-container {
   display: flex;
   flex-direction: column;
@@ -25,8 +25,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .retry-button,
@@ -57,14 +61,14 @@
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
   transition: transform 0.2s;
 }
 
 .agent-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .agent-portrait img {
@@ -98,6 +102,7 @@
   margin-bottom: 8px;
   border-bottom: 1px solid #eee;
   padding-bottom: 4px;
+  color: #333;
 }
 
 .agent-abilities ul {
@@ -107,4 +112,6 @@
 .agent-abilities li {
   margin-bottom: 8px;
   line-height: 1.4;
+  color: #333;
+  list-style-type: none;
 }

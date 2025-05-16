@@ -1,7 +1,7 @@
 import {Test, TestingModule} from '@nestjs/testing';
 import {GetWeaponsUseCase} from '../../../src/core/use-cases/get-weapons.use-case';
 import {WeaponsMapper} from '../../../src/core/mappers/weapons.mapper';
-import {IWeapon} from '../../../src/core/interfaces/weapons.interface';
+import {IWeapon} from '@shared/interfaces';
 import axios from 'axios';
 
 jest.mock('axios');

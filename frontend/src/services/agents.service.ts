@@ -1,4 +1,4 @@
-import type {IAgent} from '../types/agents.interface';
+import type { IAgent } from '@shared/interfaces/agents.interface';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 

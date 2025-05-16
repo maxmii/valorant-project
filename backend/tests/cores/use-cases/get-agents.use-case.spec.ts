@@ -1,7 +1,7 @@
 import {Test, TestingModule} from '@nestjs/testing';
 import {GetAgentsUseCase} from '../../../src/core/use-cases/get-agents.use-case';
 import {AgentsMapper} from '../../../src/core/mappers/agents.mapper';
-import {IAgent} from '../../../src/core/interfaces/agents.interface';
+import {IAgent} from '@shared/interfaces/agents.interface';
 import axios from 'axios';
 
 jest.mock('axios');
