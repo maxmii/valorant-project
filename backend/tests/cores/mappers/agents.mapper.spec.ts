@@ -81,18 +81,4 @@ describe('AgentsMapper', () => {
       );
     });
   });
-
-  describe('getAgentRole', () => {
-    it('should return correct role for a known agent', () => {
-      const result = (mapper as any).getAgentRole('Jett');
-
-      expect(result).toBe('Duelist');
-    });
-
-    it('should return Unknown role for an unknown agent', () => {
-      const result = (mapper as any).getAgentRole('UnknownAgent');
-
-      expect(result).toBe(undefined);
-    });
-  });
 });

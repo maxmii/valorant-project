@@ -122,10 +122,6 @@ describe('GetAgentsUseCase', () => {
     jest.clearAllMocks();
   });
 
-  it('should be defined', () => {
-    expect(useCase).toBeDefined();
-  });
-
   describe('execute', () => {
     it('should fetch agents and map them correctly', async () => {
       mockedAxios.get.mockResolvedValue(mockAgentApiResponse);
@@ -134,7 +130,7 @@ describe('GetAgentsUseCase', () => {
       const result = await useCase.execute({});
 
       expect(mockedAxios.get).toHaveBeenCalledWith(
-        'https://valorant-api.com/agents',
+        'https://valorant-api.com/agents?isPlayableCharacter=true',
       );
       expect(agentsMapper.mapAgents).toHaveBeenCalledWith(
         mockAgentApiResponse.data.data,

@@ -15,7 +15,7 @@ export class GetAgentsUseCase {
   }: IAgentQueries): Promise<IAgent[]> {
     const apiUrl = process.env.API_URL;
     const resData = await axios
-      .get(`${apiUrl}/agents`)
+      .get(`${apiUrl}/agents?isPlayableCharacter=true`)
       .then((res) => res.data.data);
 
     return this.agentsMapper.mapAgents(resData, agentName, agentRole);
