@@ -1,13 +1,16 @@
 import {useAgents} from '../hooks/useAgents.hook';
 import './agents.css';
+import '../layout/PageLayout.css'
+import '../components/buttons.css';
 
 const AgentPage = () => {
   const {agents, loading, error, refetch} = useAgents();
+  const loadingAgentsString = 'Loading Agents'
 
   if (loading) {
     return (
       <div className="loading-container">
-        <h2>Loading Agents...</h2>
+        <h2>{`${loadingAgentsString}...`}</h2>
         <div className="loader"></div>
       </div>
     );
@@ -16,7 +19,7 @@ const AgentPage = () => {
   if (error) {
     return (
       <div className="error-container">
-        <h2>Error Loading Agents</h2>
+        <h2>{`Error ${loadingAgentsString}`}</h2>
         <p>{error.message}</p>
         <button onClick={refetch} className="retry-button">
           Try Again
@@ -26,15 +29,15 @@ const AgentPage = () => {
   }
 
   return (
-    <div className="agents-container">
+    <div className="container">
       <h2>Valorant Agents</h2>
       <button onClick={refetch} className="refresh-button">
         Refresh Agents
       </button>
 
-      <div className="agents-grid">
+      <div className="grid">
         {agents.map((agent) => (
-          <div key={agent.agentName} className="agent-card">
+          <div key={agent.agentName} className="card">
             <div className="agent-portrait">
               <img src={agent.agentPortrait} alt={agent.agentName} />
             </div>
