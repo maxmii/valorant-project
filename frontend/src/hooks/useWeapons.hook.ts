@@ -41,5 +41,5 @@ export const useWeapons = () => {
     }
   };
 
-  return {agents: weapons, loading, error, refetch};
+  return {weapons, loading, error, refetch};
 };

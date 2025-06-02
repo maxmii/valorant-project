@@ -1,5 +1,5 @@
 import type {ReactNode} from 'react';
-import './MainLayout.css';
+import '../styles/layout/mainLayout.css';
 import {Outlet, Link} from 'react-router-dom';
 
 interface MainLayoutProps {

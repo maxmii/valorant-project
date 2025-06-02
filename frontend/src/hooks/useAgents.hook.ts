@@ -3,7 +3,7 @@
  */
 
 import {useState, useEffect} from 'react';
-import type {IAgent} from '../types/agents.interface';
+import type {IAgent} from '@shared/interfaces';
 import {AgentsService} from '../services/agents.service';
 
 export const useAgents = () => {

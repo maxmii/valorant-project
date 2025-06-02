@@ -1,7 +1,7 @@
 import {useAgents} from '../hooks/useAgents.hook';
-import './agents.css';
-import '../layout/PageLayout.css'
-import '../components/buttons.css';
+import '../styles/pages.css';
+import '../styles/layout/pageLayout.css';
+import '../styles/components/buttons.css';
 
 const AgentPage = () => {
   const {agents, loading, error, refetch} = useAgents();
@@ -38,7 +38,7 @@ const AgentPage = () => {
       <div className="grid">
         {agents.map((agent) => (
           <div key={agent.agentName} className="card">
-            <div className="agent-portrait">
+            <div className="portrait">
               <img src={agent.agentPortrait} alt={agent.agentName} />
             </div>
             <div className="agent-info">
