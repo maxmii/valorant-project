@@ -41,7 +41,7 @@ const AgentPage = () => {
     <div className="container">
       <h2>Valorant Agents</h2>
 
-      <div className='button-containers'>
+      <div className="button-containers">
         <button onClick={refetch} className="refresh-button">
           Refresh Agents
         </button>

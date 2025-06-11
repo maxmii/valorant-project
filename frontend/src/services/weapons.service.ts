@@ -11,7 +11,11 @@ export const WeaponsService = {
         throw new Error(`API error: ${res.status}`);
       }
 
-      return res.json();
+      const weaponsData = await res.json();
+
+      return weaponsData.sort((a: IWeapon, b: IWeapon) =>
+        a.weaponName.localeCompare(b.weaponName),
+      );
     } catch (error) {
       console.error(`Error fetching weapons: ${error}`);
       throw error;
