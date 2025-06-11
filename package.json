@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "install:all": "pnpm install --recursive",
-    "build:frontend": "cd frontend &&  pnpm -r run build",
-    "build:backend": "cd backend && pnpm -r run build",
+    "build-frontend": "cd frontend &&  pnpm -r run build",
+    "build-backend": "cd backend && pnpm -r run build",
     "dev": "pnpm -r run dev",
     "lint": "pnpm -r run lint"
   },

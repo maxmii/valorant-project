@@ -7,7 +7,7 @@
     "dev": "vite",
     "dev:debug": "vite --debug --force",
     "dev:sourcemap": "VITE_SOURCEMAP=true vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
