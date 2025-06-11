@@ -1,11 +1,20 @@
 import {useAgents} from '../hooks/useAgents.hook';
+import {useState} from 'react';
 import '../styles/pages/index.css';
 import '../styles/layout/pageLayout.css';
 import '../styles/components/buttons.css';
+import {RoleButtons} from '../components/filterButton';
 
 const AgentPage = () => {
-  const {agents, loading, error, refetch} = useAgents();
-  const loadingAgentsString = 'Loading Agents'
+  const [selectedRole, setSelectedRole] = useState<string>('');
+  const {agents, loading, error, refetch} = useAgents(selectedRole);
+  const loadingAgentsString = 'Loading Agents';
+  const roles = [
+    {name: 'Duelists', value: 'duelist'},
+    {name: 'Sentinels', value: 'sentinel'},
+    {name: 'Initiators', value: 'initiator'},
+    {name: 'Controllers', value: 'controller'},
+  ];
 
   if (loading) {
     return (
@@ -34,6 +43,12 @@ const AgentPage = () => {
       <button onClick={refetch} className="refresh-button">
         Refresh Agents
       </button>
+
+      <RoleButtons
+        selectedFilter={selectedRole}
+        setSelectedFilter={setSelectedRole}
+        filter={roles}
+      />
 
       <div className="grid">
         {agents.map((agent) => (

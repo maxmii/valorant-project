@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {WeaponsService} from '../services/weapons.service';
 import type {IWeapon} from '@shared/interfaces';
 
-export const useWeapons = () => {
+export const useWeapons = (weaponType: string) => {
   const [weapons, setWeapons] = useState<IWeapon[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
@@ -11,7 +11,7 @@ export const useWeapons = () => {
     const fetchAgents = async () => {
       try {
         setLoading(true);
-        const data = await WeaponsService.getAllWeapons();
+        const data = await WeaponsService.getAllWeapons(weaponType);
         setWeapons(data);
         setError(null);
       } catch (err) {
@@ -24,7 +24,7 @@ export const useWeapons = () => {
     };
 
     fetchAgents();
-  }, []);
+  }, [weaponType]);
 
   const refetch = async () => {
     try {

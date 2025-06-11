@@ -143,6 +143,14 @@ h2 {
   margin-bottom: 1rem;
 }
 
+.weapon-stats {
+  list-style-type: none;
+}
+
+.weapon-stats li {
+  font-size: 1rem;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .grid {
@@ -161,7 +169,4 @@ h2 {
   }
 }
 
-.weapon-stats ul {
-  font-size: 20px;
-  list-style-type: none;
-}
+

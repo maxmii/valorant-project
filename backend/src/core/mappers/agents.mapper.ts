@@ -44,7 +44,7 @@ export class AgentsMapper {
             agentRole: role.displayName,
           }),
         )
-        .filter((agent) => !agentRole || agent.agentRole === agentRole);
+        .filter((agent) => !agentRole || agent.agentRole.toLowerCase() === agentRole.toLowerCase());
     } catch (error) {
       this.logger.error(`Error: ${error.message}`);
       throw error;

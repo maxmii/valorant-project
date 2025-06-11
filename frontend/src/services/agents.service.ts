@@ -3,9 +3,9 @@ import type { IAgent } from '@shared/interfaces/agents.interface';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export const AgentsService = {
-  async getAllAgents(): Promise<IAgent[]> {
+  async getAllAgents(selectedRole: string = ''): Promise<IAgent[]> {
     try {
-      const res = await fetch(`${API_URL}/v1/agents`);
+      const res = await fetch(`${API_URL}/v1/agents?agentRole=${selectedRole}`);
 
       if (!res.ok) {
         throw new Error(`API error: ${res.status}`)
