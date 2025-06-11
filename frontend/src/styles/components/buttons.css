@@ -12,7 +12,7 @@
 }
 
 .retry-button:hover,
-.refresh-button:hover filter-button {
+.refresh-button:hover {
   background-color: #e0232f;
 }
 
