@@ -63,9 +63,9 @@ const WeaponsPage = () => {
               <p className="weapon-type">Type: {weapon.weaponType}</p>
 
               {weapon.weaponStats && (
-                <div>
+                <div className="weapon-stats">
                   <h4>Weapon Stats</h4>
-                  <ul className="weapon-stats">
+                  <ul>
                     <li>Fire Rate: {weapon.weaponStats.fireRate}</li>
                     <li>Magazine Size: {weapon.weaponStats.magazineSize}</li>
                     <li>
