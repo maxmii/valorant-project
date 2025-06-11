@@ -1,5 +1,5 @@
 import {Injectable, Logger} from '@nestjs/common';
-import {WeaponDto} from '../interfaces/dto/weapons.dto';
+import {WeaponDto} from '@shared/interfaces/dto/weapons.dto';
 import type {IWeapon} from '@shared/interfaces/weapons.interface';
 
 @Injectable()

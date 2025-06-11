@@ -1,5 +1,5 @@
 import {Injectable, Logger} from '@nestjs/common';
-import {AgentDto} from '../interfaces/dto/agents.dto';
+import {AgentDto} from '@shared/interfaces/dto/agents.dto';
 import type {IAgent} from '@shared/interfaces/agents.interface';
 
 @Injectable()

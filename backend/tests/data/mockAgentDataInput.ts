@@ -1,4 +1,4 @@
-import {AgentDto} from '../../src/core/interfaces/dto/agents.dto';
+import {AgentDto} from '@shared/interfaces/dto/agents.dto';
 
 export const mockAgentDataInput: AgentDto[] = [
   {

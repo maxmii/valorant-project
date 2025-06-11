@@ -1,4 +1,4 @@
-import {WeaponDto} from '../../src/core/interfaces/dto/weapons.dto';
+import {WeaponDto} from '@shared/interfaces/dto/weapons.dto';
 
 export const mockWeaponDataInput: WeaponDto[] = [
   {

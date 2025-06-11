@@ -1,5 +1,5 @@
 import {useWeapons} from '../hooks/useWeapons.hook';
-import '../styles/pages.css';
+import '../styles/pages/index.css';
 import '../styles/layout/pageLayout.css';
 import '../styles/components/buttons.css';
 
@@ -46,12 +46,12 @@ const WeaponsPage = () => {
               <p className="weapon-type">Type: {weapon.weaponType}</p>
               
               {weapon.weaponStats && (
-                <div className="weapon-stats">
+                <div>
                   <h4>Weapon Stats</h4>
-                  <ul>
+                  <ul className="weapon-stats">
                     <li>Fire Rate: {weapon.weaponStats.fireRate}</li>
                     <li>Magazine Size: {weapon.weaponStats.magazineSize}</li>
-                    <li>Wall Penetration: {weapon.weaponStats.wallPenetration}</li>
+                    <li>Reload Time: {weapon.weaponStats.reloadTimeSeconds} Secs</li>
                   </ul>
                 </div>
               )}

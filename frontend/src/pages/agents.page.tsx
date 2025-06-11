@@ -1,5 +1,5 @@
 import {useAgents} from '../hooks/useAgents.hook';
-import '../styles/pages.css';
+import '../styles/pages/index.css';
 import '../styles/layout/pageLayout.css';
 import '../styles/components/buttons.css';
 
@@ -38,7 +38,7 @@ const AgentPage = () => {
       <div className="grid">
         {agents.map((agent) => (
           <div key={agent.agentName} className="card">
-            <div className="portrait">
+            <div className="agent-portrait">
               <img src={agent.agentPortrait} alt={agent.agentName} />
             </div>
             <div className="agent-info">
