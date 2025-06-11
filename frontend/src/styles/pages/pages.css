@@ -1,0 +1,172 @@
+/* Global page styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h2 {
+  color: #ff4655;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+/* Grid layout for agents and weapons */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Card styles */
+.card {
+  background: #1f2326;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Portrait and image styles */
+.agent-portrait {
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.agent-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.portrait-weapon img {
+  width: 60%;
+  height: 60%;
+  object-fit: cover;
+}
+
+/* Info section styles */
+.agent-info, .weapon-info {
+  padding: 1.5rem;
+}
+
+.agent-info h3, .weapon-info h3 {
+  margin-top: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.weapon-info ul {
+  margin-top: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.agent-role, .weapon-type {
+  color: #ff4655;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.agent-description {
+  color: #cccccc;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+/* Abilities section */
+.agent-abilities {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+}
+
+.agent-abilities h4 {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.agent-abilities ul {
+  padding-left: 1rem;
+}
+
+.agent-abilities li {
+  color: #cccccc;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.agent-abilities strong {
+  color: #ff4655;
+}
+
+/* Loading states */
+.loading-container, .error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+}
+
+.loader {
+  border: 4px solid rgba(255, 70, 85, 0.3);
+  border-top: 4px solid #ff4655;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-top: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error states */
+.error-container h2 {
+  color: #ff4655;
+}
+
+.error-container p {
+  color: #cccccc;
+  margin-bottom: 1rem;
+}
+
+.weapon-stats {
+  list-style-type: none;
+}
+
+.weapon-stats li {
+  font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

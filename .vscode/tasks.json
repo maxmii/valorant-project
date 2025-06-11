@@ -1,0 +1,110 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Backend",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/backend && NODE_ENV=development NODE_OPTIONS='--inspect' pnpm run start:debug",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": {
+          "regexp": "^([^\\s].*)\\((\\d+|\\d+,\\d+|\\d+,\\d+,\\d+,\\d+)\\):\\s+(error|warning|info)\\s+(TS\\d+)\\s*:\\s*(.*)$",
+          "file": 1,
+          "location": 2,
+          "severity": 3,
+          "code": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting development server",
+          "endsPattern": "^.*Nest application successfully started"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "develop"
+      }
+    },
+    {
+      "label": "Start Frontend",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/frontend && VITE_SOURCEMAP=true NODE_OPTIONS='--inspect' pnpm run dev:sourcemap",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": [
+          {
+            "regexp": "^([^\\s].*)\\((\\d+|\\d+,\\d+|\\d+,\\d+,\\d+,\\d+)\\):\\s+(error|warning|info)\\s+(TS\\d+)\\s*:\\s*(.*)$",
+            "file": 1,
+            "location": 2,
+            "severity": 3,
+            "code": 4,
+            "message": 5
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*VITE.*started",
+          "endsPattern": "^.*ready in.*"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "develop"
+      }
+    },
+    {
+      "label": "Start Full Stack",
+      "dependsOn": ["Start Backend", "Start Frontend"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Install Dependencies",
+      "type": "shell",
+      "command": "cd ${workspaceFolder} && pnpm install && cd ${workspaceFolder}/backend && pnpm install && cd ${workspaceFolder}/frontend && pnpm install",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Lint",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/frontend && pnpm run lint && cd ${workspaceFolder}/backend && pnpm run lint",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "lint-format"
+      },
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "Build",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/frontend && pnpm run build && cd ${workspaceFolder}/backend && pnpm run build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "build"
+      },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "Wait For Services",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/wait-for-services.sh",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "isBackground": false
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+
+.retry-button,
+.refresh-button {
+  background-color: #ff4655;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+.retry-button:hover,
+.refresh-button:hover {
+  background-color: #e0232f;
+}
+
+.filter-button {
+  margin-top: 16px;
+}
+
+.filter-button button {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.active-button {
+  background-color: #ff4655;
+  color: white;
+  font: bolder;
+}
