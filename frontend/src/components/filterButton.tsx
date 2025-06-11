@@ -1,14 +1,10 @@
-type RoleButtonsProps = {
-  selectedFilter: string;
-  setSelectedFilter: (filter: string) => void;
-  filter: {name: string; value: string}[];
-};
+import type {FilterButtonsProps} from '../types/filterButtonsProps.type';
 
-export function RoleButtons({
+const FilterButtons: React.FC<FilterButtonsProps> = ({
   selectedFilter,
   setSelectedFilter,
   filter,
-}: RoleButtonsProps) {
+}) => {
   return (
     <div className="filter-button">
       {filter.map((role) => (
@@ -23,4 +19,6 @@ export function RoleButtons({
       ))}
     </div>
   );
-}
+};
+
+export default FilterButtons;

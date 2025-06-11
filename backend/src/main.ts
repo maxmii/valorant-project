@@ -7,7 +7,7 @@ import {VersioningType, Logger} from '@nestjs/common';
 // Register path aliases for @shared
 tsconfig.register({
   baseUrl: join(__dirname, '..', '..'),
-  paths: { '@shared/*': ['shared/*'] },
+  paths: {'@shared/*': ['shared/*']},
 });
 
 async function bootstrap() {

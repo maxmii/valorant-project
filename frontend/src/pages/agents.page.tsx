@@ -3,7 +3,7 @@ import {useState} from 'react';
 import '../styles/pages/index.css';
 import '../styles/layout/pageLayout.css';
 import '../styles/components/buttons.css';
-import {RoleButtons} from '../components/filterButton';
+import FilterButtons from '../components/filterButton';
 
 const AgentPage = () => {
   const [selectedRole, setSelectedRole] = useState<string>('');
@@ -46,7 +46,7 @@ const AgentPage = () => {
           Refresh Agents
         </button>
 
-        <RoleButtons
+        <FilterButtons
           selectedFilter={selectedRole}
           setSelectedFilter={setSelectedRole}
           filter={roles}

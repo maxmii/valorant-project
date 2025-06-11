@@ -3,7 +3,7 @@ import {useWeapons} from '../hooks/useWeapons.hook';
 import '../styles/pages/index.css';
 import '../styles/layout/pageLayout.css';
 import '../styles/components/buttons.css';
-import {RoleButtons} from '../components/filterButton';
+import FilterButtons from '../components/filterButton';
 
 const WeaponsPage = () => {
   const [selectedWeaponType, setSelectedWeaponType] = useState<string>('');
@@ -46,7 +46,7 @@ const WeaponsPage = () => {
         Refresh Weapons
       </button>
 
-      <RoleButtons
+      <FilterButtons
         selectedFilter={selectedWeaponType}
         setSelectedFilter={setSelectedWeaponType}
         filter={weaponTypes}
