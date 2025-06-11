@@ -40,15 +40,18 @@ const AgentPage = () => {
   return (
     <div className="container">
       <h2>Valorant Agents</h2>
-      <button onClick={refetch} className="refresh-button">
-        Refresh Agents
-      </button>
 
-      <RoleButtons
-        selectedFilter={selectedRole}
-        setSelectedFilter={setSelectedRole}
-        filter={roles}
-      />
+      <div className='button-containers'>
+        <button onClick={refetch} className="refresh-button">
+          Refresh Agents
+        </button>
+
+        <RoleButtons
+          selectedFilter={selectedRole}
+          setSelectedFilter={setSelectedRole}
+          filter={roles}
+        />
+      </div>
 
       <div className="grid">
         {agents.map((agent) => (
