@@ -1,9 +1,6 @@
 {
-  "extends": "./tsconfig.app.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "esModuleInterop": true,
-    "verbatimModuleSyntax": false
-  },
-  "include": ["src", "tests", "../shared"]
+    "esModuleInterop": true
+  }
 }

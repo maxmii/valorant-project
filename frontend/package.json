@@ -10,7 +10,7 @@
     "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest --config jest.config.cjs",
+    "test": "jest --config jest.config.js",
     "format": "prettier --write \"src/**/*.tsx\" \"tests/**/*.ts\""
   },
   "dependencies": {
