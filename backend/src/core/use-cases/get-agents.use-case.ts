@@ -1,6 +1,7 @@
 import {Injectable, Logger} from '@nestjs/common';
 import {AgentsMapper} from '../mappers/agents.mapper';
-import {IAgent, IAgentQueries} from '@shared/interfaces';
+import {IAgent} from '@shared/interfaces';
+import {IAgentQueries} from '@shared/interfaces/queries';
 import {fetchApiResource} from '../../infrastructure/services/fetch-api.service';
 import {AgentDto} from '@shared/interfaces/dto/agents.dto';
 

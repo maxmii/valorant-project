@@ -1,7 +1,8 @@
 import {Injectable, Logger} from '@nestjs/common';
 import {fetchApiResource} from '../../infrastructure/services/fetch-api.service';
 import {WeaponsMapper} from '../mappers';
-import {IWeapon, IWeaponQueries} from '@shared/interfaces';
+import {IWeapon} from '@shared/interfaces';
+import {IWeaponQueries} from '@shared/interfaces/queries';
 import {WeaponDto} from '@shared/interfaces/dto/weapons.dto';
 @Injectable()
 export class GetWeaponsUseCase {

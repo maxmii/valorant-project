@@ -1,5 +1,5 @@
 import {Logger, Injectable} from '@nestjs/common';
-import {IMapQueries} from '@shared/interfaces/maps.queries.interface';
+import {IMapQueries} from '@shared/interfaces/queries';
 import {fetchApiResource} from '../../infrastructure/services/fetch-api.service';
 import {ValorantMapsMapper} from '../mappers/valorantMaps.mapper';
 import {MapDto} from '@shared/interfaces/dto/map.dto';
