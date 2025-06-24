@@ -32,7 +32,7 @@ export class WeaponsMapper {
             displayIcon,
             killStreamIcon,
             weaponStats,
-          }) => ({
+          }): IWeapon => ({
             weaponName: displayName,
             weaponType: this.getCategory(category),
             displayIcon: displayIcon,

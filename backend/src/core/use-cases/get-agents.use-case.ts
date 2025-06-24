@@ -14,7 +14,9 @@ export class GetAgentsUseCase {
     agentName,
     agentRole,
   }: IAgentQueries): Promise<IAgent[]> {
-    const resData = await fetchApiResource<AgentDto[]>('agents?isPlayableCharacter=true');
+    const resData = await fetchApiResource<AgentDto[]>(
+      'agents?isPlayableCharacter=true',
+    );
 
     return this.agentsMapper.mapAgents(resData, agentName, agentRole);
   }

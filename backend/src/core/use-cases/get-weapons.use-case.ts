@@ -2,7 +2,7 @@ import {Injectable, Logger} from '@nestjs/common';
 import {fetchApiResource} from '../../infrastructure/services/fetch-api.service';
 import {WeaponsMapper} from '../mappers';
 import {IWeapon, IWeaponQueries} from '@shared/interfaces';
-import { WeaponDto } from '@shared/interfaces/dto/weapons.dto';
+import {WeaponDto} from '@shared/interfaces/dto/weapons.dto';
 @Injectable()
 export class GetWeaponsUseCase {
   private readonly logger = new Logger(GetWeaponsUseCase.name);
@@ -13,7 +13,7 @@ export class GetWeaponsUseCase {
     weaponName,
     weaponType,
   }: IWeaponQueries): Promise<IWeapon[]> {
-    const resData = await fetchApiResource<WeaponDto[]>('weapons')
+    const resData = await fetchApiResource<WeaponDto[]>('weapons');
 
     const filteredData = resData.filter((data) => data.displayName !== 'Melee');
 

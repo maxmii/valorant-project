@@ -13,18 +13,18 @@ export class AgentsMapper {
     agentRole: string | null,
   ): IAgent[] {
     try {
-      const agents = agentData.filter((agent) =>
-        agentName
-          ? agent.displayName.toLowerCase() === agentName.toLowerCase()
-          : true,
-      );
-
-      if (agents.length === 0) {
+      if (agentData.length === 0) {
         const err = new Error('Agent cannot be found sorry');
         this.logger.error(`Error: ${err.message}`);
 
         throw err;
       }
+
+      const agents = agentData.filter((agent) =>
+        agentName
+          ? agent.displayName.toLowerCase() === agentName.toLowerCase()
+          : true,
+      );
 
       return agents
         .map(
@@ -35,7 +35,7 @@ export class AgentsMapper {
             fullPortrait,
             fullPortraitV2,
             role,
-          }) => ({
+          }): IAgent => ({
             agentName: displayName,
             agentDescription: description,
             agentAbilities: abilities,
