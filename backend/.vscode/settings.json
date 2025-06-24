@@ -1,0 +1,6 @@
+{
+  // Use the correct Jest config for the Orta.vscode-jest extension
+  "jest.jestCommandLine": "pnpm jest --config ./tests/jest-e2e.json",
+  "jest.rootPath": "../../",
+  "jest.testExplorer.enabled": true
+}

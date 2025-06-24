@@ -2,63 +2,54 @@ import {Test, TestingModule} from '@nestjs/testing';
 import {GetAgentsUseCase} from '../../../src/core/use-cases/get-agents.use-case';
 import {AgentsMapper} from '../../../src/core/mappers/agents.mapper';
 import {IAgent} from '@shared/interfaces/agents.interface';
-import axios from 'axios';
+import {fetchApiResource} from 'src/infrastructure/services/fetch-api.service';
 
-jest.mock('axios');
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+jest.mock('src/infrastructure/services/fetch-api.service');
+const mockedFetchApiResource = fetchApiResource as jest.Mock;
 
 describe('GetAgentsUseCase', () => {
   let useCase: GetAgentsUseCase;
   let agentsMapper: AgentsMapper;
 
-  const mockAgentApiResponse = {
-    data: {
-      data: [
+  const mockAgentApiResponse = [
+    {
+      abilities: [
         {
-          uuid: '1234',
-          displayName: 'Jett',
-          description: 'Fast moving duelist',
-          abilities: [
-            {
-              slot: 'Ability1',
-              displayName: 'Updraft',
-              description: 'INSTANTLY propel Jett high into the air.',
-              displayIcon:
-                'https://media.valorant-api.com/abilities/updraft-icon.png',
-            },
-          ],
-          fullPortrait:
-            'https://media.valorant-api.com/agents/jett/portrait.png',
-          fullPortraitV2:
-            'https://media.valorant-api.com/agents/jett/portraitv2.png',
-          role: {
-            displayName: 'Duelist',
-          },
-        },
-        {
-          uuid: '5678',
-          displayName: 'Phoenix',
-          description: 'Fire-wielding duelist',
-          abilities: [
-            {
-              slot: 'Ability1',
-              displayName: 'Hot Hands',
-              description: 'EQUIP a fireball. FIRE to throw a fireball.',
-              displayIcon:
-                'https://media.valorant-api.com/abilities/hot-hands-icon.png',
-            },
-          ],
-          fullPortrait:
-            'https://media.valorant-api.com/agents/phoenix/portrait.png',
-          fullPortraitV2:
-            'https://media.valorant-api.com/agents/phoenix/portraitv2.png',
-          role: {
-            displayName: 'Duelist',
-          },
+          description: 'INSTANTLY propel Jett high into the air.',
+          displayIcon:
+            'https://media.valorant-api.com/abilities/updraft-icon.png',
+          displayName: 'Updraft',
+          slot: 'Ability1',
         },
       ],
+      description: 'Fast moving duelist',
+      displayName: 'Jett',
+      fullPortrait: 'https://media.valorant-api.com/agents/jett/portrait.png',
+      fullPortraitV2:
+        'https://media.valorant-api.com/agents/jett/portraitv2.png',
+      role: {displayName: 'Duelist'},
+      uuid: '1234',
     },
-  };
+    {
+      abilities: [
+        {
+          description: 'EQUIP a fireball. FIRE to throw a fireball.',
+          displayIcon:
+            'https://media.valorant-api.com/abilities/hot-hands-icon.png',
+          displayName: 'Hot Hands',
+          slot: 'Ability1',
+        },
+      ],
+      description: 'Fire-wielding duelist',
+      displayName: 'Phoenix',
+      fullPortrait:
+        'https://media.valorant-api.com/agents/phoenix/portrait.png',
+      fullPortraitV2:
+        'https://media.valorant-api.com/agents/phoenix/portraitv2.png',
+      role: {displayName: 'Duelist'},
+      uuid: '5678',
+    },
+  ];
 
   const mockMappedAgents: IAgent[] = [
     {
@@ -101,15 +92,17 @@ describe('GetAgentsUseCase', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        GetAgentsUseCase,
-        {
-          provide: AgentsMapper,
-          useValue: {
-            mapAgents: jest.fn(),
-          },
+      GetAgentsUseCase,
+      {
+        provide: AgentsMapper,
+        useValue: {
+        mapAgents: jest.fn(),
         },
+      },
       ],
     }).compile();
+
+    agentsMapper = module.get<AgentsMapper>(AgentsMapper);
 
     useCase = module.get<GetAgentsUseCase>(GetAgentsUseCase);
     agentsMapper = module.get<AgentsMapper>(AgentsMapper);
@@ -124,16 +117,16 @@ describe('GetAgentsUseCase', () => {
 
   describe('execute', () => {
     it('should fetch agents and map them correctly', async () => {
-      mockedAxios.get.mockResolvedValue(mockAgentApiResponse);
-      jest.spyOn(agentsMapper, 'mapAgents').mockReturnValue(mockMappedAgents);
+      mockedFetchApiResource.mockResolvedValue(mockAgentApiResponse);
+      (agentsMapper.mapAgents as jest.Mock).mockReturnValue(mockMappedAgents);
 
       const result = await useCase.execute({});
 
-      expect(mockedAxios.get).toHaveBeenCalledWith(
-        'https://valorant-api.com/agents?isPlayableCharacter=true',
+      expect(mockedFetchApiResource).toHaveBeenCalledWith(
+        'agents?isPlayableCharacter=true',
       );
       expect(agentsMapper.mapAgents).toHaveBeenCalledWith(
-        mockAgentApiResponse.data.data,
+        mockAgentApiResponse,
         undefined,
         undefined,
       );
@@ -141,15 +134,13 @@ describe('GetAgentsUseCase', () => {
     });
 
     it('should pass agent name to mapper when provided', async () => {
-      mockedAxios.get.mockResolvedValue(mockAgentApiResponse);
-      jest
-        .spyOn(agentsMapper, 'mapAgents')
-        .mockReturnValue([mockMappedAgents[0]]);
+      mockedFetchApiResource.mockResolvedValue(mockAgentApiResponse);
+      (agentsMapper.mapAgents as jest.Mock).mockReturnValue([mockMappedAgents[0]]);
 
       const result = await useCase.execute({agentName: 'Jett'});
 
       expect(agentsMapper.mapAgents).toHaveBeenCalledWith(
-        mockAgentApiResponse.data.data,
+        mockAgentApiResponse,
         'Jett',
         undefined,
       );
@@ -157,13 +148,13 @@ describe('GetAgentsUseCase', () => {
     });
 
     it('should pass agent role to mapper when provided', async () => {
-      mockedAxios.get.mockResolvedValue(mockAgentApiResponse);
-      jest.spyOn(agentsMapper, 'mapAgents').mockReturnValue(mockMappedAgents);
+      mockedFetchApiResource.mockResolvedValue(mockAgentApiResponse);
+      (agentsMapper.mapAgents as jest.Mock).mockReturnValue(mockMappedAgents);
 
       const result = await useCase.execute({agentRole: 'Duelist'});
 
       expect(agentsMapper.mapAgents).toHaveBeenCalledWith(
-        mockAgentApiResponse.data.data,
+        mockAgentApiResponse,
         undefined,
         'Duelist',
       );
@@ -172,7 +163,7 @@ describe('GetAgentsUseCase', () => {
 
     it('should handle API errors gracefully', async () => {
       const error = new Error('API Error');
-      mockedAxios.get.mockRejectedValue(error);
+      mockedFetchApiResource.mockRejectedValue(error);
 
       await expect(useCase.execute({})).rejects.toThrow('API Error');
     });

@@ -16,9 +16,8 @@ describe('AgentsMapper', () => {
     it('should map agent data correctly', () => {
       const result = mapper.mapAgents(mockAgentDataInput, null, null);
 
-      expect(result).toHaveLength(2); // Should filter out non-playable characters
+      expect(result).toHaveLength(2);
 
-      // Check first agent
       expect(result[0]).toEqual({
         agentName: 'Jett',
         agentDescription: 'Fast moving duelist',
