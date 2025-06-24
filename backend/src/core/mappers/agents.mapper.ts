@@ -16,17 +16,14 @@ export class AgentsMapper {
       if (agentData.length === 0) {
         const err = new Error('Agent cannot be found sorry');
         this.logger.error(`Error: ${err.message}`);
-
         throw err;
       }
-
       const agents = agentData.filter((agent) =>
         agentName
           ? agent.displayName.toLowerCase() === agentName.toLowerCase()
           : true,
       );
-
-      return agents
+      const mappedAgents = agents
         .map(
           ({
             displayName,
@@ -49,6 +46,12 @@ export class AgentsMapper {
             !agentRole ||
             agent.agentRole.toLowerCase() === agentRole.toLowerCase(),
         );
+      if (mappedAgents.length === 0) {
+        const err = new Error('Agent cannot be found sorry');
+        this.logger.error(`Error: ${err.message}`);
+        throw err;
+      }
+      return mappedAgents;
     } catch (error) {
       this.logger.error(`Error: ${error.message}`);
       throw error;
