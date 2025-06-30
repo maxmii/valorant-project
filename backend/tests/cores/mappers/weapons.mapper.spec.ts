@@ -1,6 +1,6 @@
 import {Test, TestingModule} from '@nestjs/testing';
 import {WeaponsMapper} from '../../../src/core/mappers/weapons.mapper';
-import {mockWeaponDataInput} from 'tests/data/mockWeaponDataInput';
+import {mockWeaponsDto} from '../../data/mockWeaponData';
 
 describe('WeaponsMapper', () => {
   let mapper: WeaponsMapper;
@@ -19,7 +19,7 @@ describe('WeaponsMapper', () => {
 
   describe('mapWeapons', () => {
     it('should map weapon data correctly', () => {
-      const result = mapper.mapWeapons(mockWeaponDataInput);
+      const result = mapper.mapWeapons(mockWeaponsDto);
 
       expect(result).toHaveLength(2);
 
@@ -31,19 +31,19 @@ describe('WeaponsMapper', () => {
           'https://media.valorant-api.com/weapons/vandal/displayicon.png',
         killStreamIcon:
           'https://media.valorant-api.com/weapons/vandal/killstreamicon.png',
-        weaponStats: mockWeaponDataInput[0].weaponStats,
+        weaponStats: mockWeaponsDto[0].weaponStats,
       });
     });
 
     it('should filter weapons by name when provided', () => {
-      const result = mapper.mapWeapons(mockWeaponDataInput, 'Vandal');
+      const result = mapper.mapWeapons(mockWeaponsDto, 'Vandal');
 
       expect(result).toHaveLength(1);
       expect(result[0].weaponName).toBe('Vandal');
     });
 
     it('should filter weapons by type when provided', () => {
-      const result = mapper.mapWeapons(mockWeaponDataInput, null, 'Rifle');
+      const result = mapper.mapWeapons(mockWeaponsDto, null, 'Rifle');
 
       expect(result).toHaveLength(1);
       expect(result[0].weaponName).toBe('Vandal');
@@ -51,14 +51,14 @@ describe('WeaponsMapper', () => {
     });
 
     it('should handle case insensitive filtering for name', () => {
-      const result = mapper.mapWeapons(mockWeaponDataInput, 'vandal');
+      const result = mapper.mapWeapons(mockWeaponsDto, 'vandal');
 
       expect(result).toHaveLength(1);
       expect(result[0].weaponName).toBe('Vandal');
     });
 
     it('should handle case insensitive filtering for type', () => {
-      const result = mapper.mapWeapons(mockWeaponDataInput, null, 'rifle');
+      const result = mapper.mapWeapons(mockWeaponsDto, null, 'rifle');
 
       expect(result).toHaveLength(1);
       expect(result[0].weaponType).toBe('Rifle');
@@ -66,7 +66,7 @@ describe('WeaponsMapper', () => {
 
     it('should return empty array when no weapons match filters', () => {
       const result = mapper.mapWeapons(
-        mockWeaponDataInput,
+        mockWeaponsDto,
         'NonExistentWeapon',
       );
 

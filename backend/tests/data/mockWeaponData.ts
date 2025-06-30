@@ -1,6 +1,7 @@
 import {WeaponDto} from '@shared/interfaces/dto/weapons.dto';
+import { IWeapon } from '@shared/interfaces';
 
-export const mockWeaponDataInput: WeaponDto[] = [
+export const mockWeaponsDto: WeaponDto[] = [
   {
     uuid: '1234',
     displayName: 'Vandal',
@@ -120,3 +121,84 @@ export const mockWeaponDataInput: WeaponDto[] = [
     },
   },
 ];
+
+  export const mockMappedWeaponsData: IWeapon[] = [
+    {
+      weaponName: 'Vandal',
+      weaponType: 'Rifle',
+      displayIcon:
+        'https://media.valorant-api.com/weapons/vandal/displayicon.png',
+      killStreamIcon:
+        'https://media.valorant-api.com/weapons/vandal/killstreamicon.png',
+      weaponStats: {
+        fireRate: 9.75,
+        magazineSize: 25,
+        runSpeedMultiplier: 0.85,
+        equipTimeSeconds: 1,
+        reloadTimeSeconds: 2.5,
+        firstBulletAccuracy: 0.25,
+        shotgunPelletCount: 1,
+        wallPenetration: 'Medium',
+        feature: null,
+        fireMode: null,
+        altFireType: 'ADS',
+        adsStats: {
+          zoomMultiplier: 1.25,
+          fireRate: 8.5,
+          runSpeedMultiplier: 0.75,
+          burstCount: 1,
+          firstBulletAccuracy: 0.15,
+        },
+        altShotgunStats: null,
+        airBurstStats: null,
+        damageRanges: [
+          {
+            rangeStartMeters: 0,
+            rangeEndMeters: 30,
+            headDamage: 160,
+            bodyDamage: 40,
+            legDamage: 34,
+          },
+        ],
+      },
+    },
+    {
+      weaponName: 'Phantom',
+      weaponType: 'Rifle',
+      displayIcon:
+        'https://media.valorant-api.com/weapons/phantom/displayicon.png',
+      killStreamIcon:
+        'https://media.valorant-api.com/weapons/phantom/killstreamicon.png',
+      weaponStats: {
+        fireRate: 11,
+        magazineSize: 30,
+        runSpeedMultiplier: 0.85,
+        equipTimeSeconds: 1,
+        reloadTimeSeconds: 2.5,
+        firstBulletAccuracy: 0.2,
+        shotgunPelletCount: 1,
+        wallPenetration: 'Medium',
+        feature: null,
+        fireMode: null,
+        altFireType: 'ADS',
+        adsStats: {
+          zoomMultiplier: 1.25,
+          fireRate: 9.9,
+          runSpeedMultiplier: 0.75,
+          burstCount: 1,
+          firstBulletAccuracy: 0.11,
+        },
+        altShotgunStats: null,
+        airBurstStats: null,
+        damageRanges: [
+          {
+            rangeStartMeters: 0,
+            rangeEndMeters: 15,
+            headDamage: 140,
+            bodyDamage: 39,
+            legDamage: 33,
+          },
+        ],
+      },
+    },
+  ];
